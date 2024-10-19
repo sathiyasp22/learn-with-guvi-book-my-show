@@ -11,7 +11,7 @@ window.onload = async () => {
 async function fetchMovieDetails(movieId) {
   try {
     const response = await fetch(
-      `https://movie-details-data.onrender.com/movie/${movieId}`
+      `https://learn-with-guvi-book-my-show-backend.onrender.com/movie/${movieId}`
     );
     const movie = await response.json();
 
@@ -111,7 +111,7 @@ async function fetchMovieDetails(movieId) {
 document.getElementById("submitBooking").addEventListener("click", async () => {
   const movieId = document.getElementById("modalMovieId").value;
   const showId = document.getElementById("modalShowId").value;
-  const seats = document.getElementById("modalShowDate").value;
+  const seats = document.getElementById("seatCount").value;
 
   const name = document.getElementById("name").value;
   const email = document.getElementById("email").value;
@@ -119,7 +119,7 @@ document.getElementById("submitBooking").addEventListener("click", async () => {
 
   try {
     const response = await fetch(
-      "https://movie-details-data.onrender.com/movie/book-movie",
+      "https://learn-with-guvi-book-my-show-backend.onrender.com/movie/book-movie",
       {
         method: "POST",
         headers: {
@@ -145,7 +145,9 @@ document.getElementById("submitBooking").addEventListener("click", async () => {
       alert("Tickets booked successfully!");
       window.location.reload();
     }
-  } catch (error) {}
+  } catch (error) {
+    alert("Something Went Wrong!");
+  }
 });
 
 function bookTickets(movieId, showId, date) {
